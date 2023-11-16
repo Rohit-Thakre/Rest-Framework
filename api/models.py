@@ -7,7 +7,7 @@ class Company(models.Model):
     
     name = models.CharField(max_length=50)
     CEO = models.CharField(max_length=100)
-    type = models.CharField(choices=(('IT', 'IT'), 
+    type = models.CharField(max_length=10, choices=(('IT', 'IT'), 
                                      ('Non IT', 'Non IT')
                                      ))
     about = models.TextField()
@@ -15,7 +15,7 @@ class Company(models.Model):
     active = models.BooleanField(default=1)
 
     created = models.DateTimeField(auto_now_add= True)
-    by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
